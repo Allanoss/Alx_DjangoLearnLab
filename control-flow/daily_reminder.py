@@ -1,9 +1,7 @@
-# daily_reminder.py
-
 # Prompt user for task details
-task = input("Enter the task description: ")
-priority = input("Enter the task priority (high, medium, low): ").lower()
-time_bound = input("Is the task time-bound? (yes/no): ").lower()
+task = input("Please enter the task description: ")  # Explicit prompt for task
+priority = input("Please enter the task priority (high, medium, low): ").lower()  # Explicit prompt for priority
+time_bound = input("Is the task time-bound? (yes/no): ").lower()  # Explicit prompt for time-bound check
 
 # Initialize the reminder message
 reminder = f"Task: {task} with {priority} priority"
@@ -25,3 +23,4 @@ if time_bound == "yes":
 
 # Print the customized reminder
 print(reminder)
+
