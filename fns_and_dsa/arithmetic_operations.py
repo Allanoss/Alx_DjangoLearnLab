@@ -9,6 +9,6 @@ def perform_operation(num1, num2, operation):
         if num2 != 0:
             return num1/num2
         else:
-            print("Div by 0 not possible")
+            return "Div by 0 not possible"
     else:
         print("Please check the values you provided or the operation")
