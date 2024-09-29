@@ -8,7 +8,7 @@ def display_menu():
 def get_choice():
     while True:
         choice = input("Enter your choice (1-4): ")
-        if choice.isdigit() and 1 <= int(choice) <= 4:  # Checks if the input is a digit and within the correct range
+        if choice.isdigit() & 1 <= int(choice) <= 4:  # Checks if the input is a digit and within the correct range
             return int(choice)
         else:
             print("Invalid input. Please enter a number between 1 and 4.")  # Keeps prompting for valid input
