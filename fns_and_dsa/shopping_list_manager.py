@@ -9,8 +9,12 @@ def main():
     shopping_list = []
     while True:
         display_menu()
-        choice = input("Enter your choice: ")
-
+        #choice = input("Enter your choice: ")
+        try:
+            choice = int(input("Enter your choice (1-4): "))  # Convert the input to an integer
+        except ValueError:
+            print("Invalid input. Please enter a number between 1 and 4.")
+            continue 
         if choice == '1':
             # Prompt for and add an item
             item = input ("What item would you like to add?")
