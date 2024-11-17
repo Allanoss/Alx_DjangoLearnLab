@@ -23,7 +23,23 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-=ese*w2srz*-h)s_jqh9w^pxcfv$a$ek-s+j0=n-p79(5)^=!)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+# Prevent browser XSS attacks
+SECURE_BROWSER_XSS_FILTER = True
+X_FRAME_OPTIONS = 'DENY'  # Prevent clickjacking
+SECURE_CONTENT_TYPE_NOSNIFF = True  # Prevent MIME-type sniffing
+
+# Ensure cookies are sent over HTTPS
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+
+# Other secure settings
+SECURE_HSTS_SECONDS = 31536000  # Enforce HTTPS for 1 year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
+# CSRF settings
+CSRF_USE_SESSIONS = True
 
 ALLOWED_HOSTS = []
 
@@ -39,6 +55,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bookshelf',
     'relationship_app',
+    'csp',
 ]
 
 MIDDLEWARE = [
@@ -49,7 +66,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'csp.middleware.CSPMiddleware',
 ]
+
+# Define the CSP rules
+CSP_DEFAULT_SRC = ["'self'"]  # Allow content only from your domain
+CSP_SCRIPT_SRC = ["'self'", "https://trusted-scripts.com"]  # Allow trusted scripts
+CSP_STYLE_SRC = ["'self'", "https://trusted-styles.com"]
+CSP_IMG_SRC = ["'self'", "data:"]
 
 ROOT_URLCONF = 'LibraryProject.urls'
 

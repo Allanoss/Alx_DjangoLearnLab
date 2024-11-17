@@ -21,3 +21,9 @@ The following permissions are defined for the `Book` model:
 
 ## Note
 Make sure to run `python manage.py setup_groups` to initialize groups and permissions programmatically.
+
+# settings.py
+
+SECURE_BROWSER_XSS_FILTER = True  # Enable browser-side XSS protection
+CSRF_COOKIE_SECURE = True  # Ensure CSRF cookies are sent only over HTTPS
+SESSION_COOKIE_SECURE = True  # Ensure session cookies are sent only over HTTPS
