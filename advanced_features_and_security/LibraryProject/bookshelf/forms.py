@@ -6,6 +6,13 @@ from django.contrib.auth import login
 from .forms import BookSearchForm, CustomUserRegistrationForm
 from .models import Book
 
+class ExampleForm(forms.Form):
+    example_field = forms.CharField(
+        max_length=100,
+        required=True,
+        widget=forms.TextInput(attrs={'placeholder': 'Example Field'}),
+    )
+    
 def search_books(request):
     if request.method == 'POST':
         form = BookSearchForm(request.POST)
