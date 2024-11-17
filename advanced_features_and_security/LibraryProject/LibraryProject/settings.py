@@ -76,6 +76,7 @@ CSP_STYLE_SRC = ["'self'", "https://trusted-styles.com"]
 CSP_IMG_SRC = ["'self'", "data:"]
 
 # Enforce HTTPS connections
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SECURE_SSL_REDIRECT = True  # Redirect HTTP to HTTPS
 SECURE_HSTS_SECONDS = 31536000  # Enable HSTS for one year
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True  # Apply HSTS to all subdomains
