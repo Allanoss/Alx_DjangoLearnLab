@@ -75,6 +75,21 @@ CSP_SCRIPT_SRC = ["'self'", "https://trusted-scripts.com"]  # Allow trusted scri
 CSP_STYLE_SRC = ["'self'", "https://trusted-styles.com"]
 CSP_IMG_SRC = ["'self'", "data:"]
 
+# Enforce HTTPS connections
+SECURE_SSL_REDIRECT = True  # Redirect HTTP to HTTPS
+SECURE_HSTS_SECONDS = 31536000  # Enable HSTS for one year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True  # Apply HSTS to all subdomains
+SECURE_HSTS_PRELOAD = True  # Enable HSTS preload list
+
+# Enable secure cookies
+SESSION_COOKIE_SECURE = True  # Transmit session cookies over HTTPS only
+CSRF_COOKIE_SECURE = True  # Transmit CSRF cookies over HTTPS only
+
+# Add secure HTTP headers
+X_FRAME_OPTIONS = 'DENY'  # Prevent clickjacking by disallowing framing
+SECURE_CONTENT_TYPE_NOSNIFF = True  # Prevent browsers from guessing content types
+SECURE_BROWSER_XSS_FILTER = True  # Enable browser's XSS filter
+
 ROOT_URLCONF = 'LibraryProject.urls'
 
 TEMPLATES = [
