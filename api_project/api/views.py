@@ -8,9 +8,11 @@ class BookList(ListAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
 
-class BookViewSet(viewsets.ModelViewSet):
+class BookViewSet(ModelViewSet):
     """
     A ViewSet for performing CRUD operations on the Book model.
     """
     queryset = Book.objects.all()
     serializer_class = BookSerializer
+    permission_classes = [IsAuthenticated] 
+    permission_classes = [IsAdminOrReadOnly]
